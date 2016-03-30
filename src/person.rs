@@ -2,7 +2,7 @@ use float_order::Float;
 use sfml::graphics::{Drawable, RectangleShape, RenderTarget, RenderStates, Transformable};
 
 pub struct Person<'a> {
-	person: RectangleShape<'a>,
+	pub person: RectangleShape<'a>,
 	pub speed: (f32, f32)
 }
 

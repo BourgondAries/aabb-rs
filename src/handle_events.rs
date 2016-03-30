@@ -7,7 +7,7 @@ pub fn handle_events<'a>(window: &mut RenderWindow, view: &mut View, person: &mu
 		use sfml::window::event::KeyPressed;
 		use sfml::window::event::Closed;
 		macro_rules! sv {
-			($l:expr, $r:expr) => ( person.speed.1 += $r * 0.7; person.speed.0 += $l * 0.01 /*view.move2f($l*50.0, $r*50.0); window.set_view(&view)*/ );
+			($l:expr, $r:expr) => ( person.speed.1 += $r * 0.7; person.speed.0 += $l * 0.01; view.set_center2f(person.person.get_position().x, person.person.get_position().y); window.set_view(&view) );
 			($z:expr) => ( { view.zoom($z); window.set_view(&view) } );
 		}
 		match event {
