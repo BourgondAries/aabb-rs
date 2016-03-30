@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["Bourgond Aries <macocio@gmail.com>"]
 
 [dependencies]
-livetoml = { path = "../livetoml" }
+# livetoml = { path = "../livetoml" }
 toml = "0.1.28"

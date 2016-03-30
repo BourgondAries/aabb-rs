@@ -1,4 +1,3 @@
-extern crate livetoml;
 extern crate toml;
 
 fn get_file_contents(filename: &str) -> std::io::Result<String> {
@@ -12,11 +11,17 @@ fn get_file_contents(filename: &str) -> std::io::Result<String> {
 
 fn main() {
 	use toml::Value;
-	use livetoml::livetoml::Interpret;
+	let y = &String::from("ok");
+	let mut x = &String::from("what");
+	x = y;
+	match *x {
+		ref y => println!("{}", y),
+	}
+	// use livetoml::livetoml::Interpret;
 	let string = get_file_contents("test.toml").unwrap();
 	let mut table: Value = string.parse()
 		.unwrap();
-	table.eval("name.0 = derp").expect("");
+	// table.eval("name.0 = derp").expect("");
 	println!("{:?}", table.lookup("name.0"));
-	println!("Hey!");
+	println!("{:?}", table);
 }
