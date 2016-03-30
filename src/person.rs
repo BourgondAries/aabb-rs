@@ -31,6 +31,7 @@ impl<'a> Person<'a> {
 	pub fn collide(&mut self, shape: &RectangleShape<'a>) {
 		if self.person.get_position().y > (400.0 - 20.0) {
 			let pos_x = self.person.get_position().x;
+			self.speed.1 = 0.0;
 			self.person.set_position2f(pos_x, (400.0 - 20.0));
 		}
 	}
