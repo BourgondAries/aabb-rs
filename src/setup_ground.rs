@@ -4,7 +4,7 @@ use sfml::graphics::{Color, Shape, RectangleShape, Transformable};
 
 pub fn setup<'a>() -> BTreeMap<Float, RectangleShape<'a>> {
 	let mut map = BTreeMap::new();
-	for i in 1..1000 {
+	for i in -100..1000 {
 		let ret = create_shape(i);
 		map.insert(ret.0, ret.1);
 	}
