@@ -4,27 +4,36 @@ extern crate sfml;
 
 mod float_order;
 mod handle_events;
+mod once_in;
 mod person;
 mod setup_ground;
 mod setup_window;
 mod test;
 
 use float_order::Float;
+use once_in::OnceIn;
 use sfml::window::{ContextSettings, Key, event, window_style};
 use sfml::graphics::{RenderWindow, Shape, RenderTarget, Color, Transformable, View};
 use std::collections::Bound;
 use person::Person;
 
 fn main() {
-
 	let (mut window, mut view) = setup_window::setup();
 	let mut map = setup_ground::setup();
+	let mut once_in = OnceIn::new(20);
+
+	println!("Created a 1-DTree containing: {} elements", map.len());
 
 	let mut person = Person::new();
 	let mut fpscnt = fps_counter::FPSCounter::new();
 
 	while window.is_open() {
-		println!("fps: {}, pos: {}", fpscnt.tick(), person.getX().0);
+		{
+			let fps = fpscnt.tick();
+			if once_in.count() {
+				println!("fps: {}, pos: {}", fps, person.getX().0);
+			}
+		}
 		handle_events::handle_events(&mut window, &mut view, &mut person);
 
 		for element in map.range_mut(
