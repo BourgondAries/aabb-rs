@@ -13,7 +13,7 @@ pub fn setup() -> (RenderWindow, View)  {
 		Some(window) => window,
 		None => panic!("Cannot create a new Render Window.")
 	};
-	window.set_framerate_limit(60);
+	window.set_framerate_limit(61);
 	let view = window.get_view();
 
 	(window, view)

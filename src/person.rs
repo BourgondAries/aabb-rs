@@ -17,7 +17,7 @@ impl<'a> Person<'a> {
 	}
 	pub fn simulate(&mut self) {
 		self.person.move2f(self.speed.0, self.speed.1);
-		self.speed.1 += 0.001;
+		self.speed.1 += 0.1;
 	}
 
 	pub fn getX(&self) -> Float {
